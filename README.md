@@ -82,12 +82,12 @@ Overall graph view
 #### Mapping Script to UI
 1. UI associated to (Dynamo Script Layout 2.)
    <p align="center">
-    <img src="ttps://user-images.githubusercontent.com/44215479/81617992-5300d980-939b-11ea-914e-6e3f328f234e.png" width="600">
+    <img src="https://user-images.githubusercontent.com/44215479/81620527-f6082200-93a0-11ea-9574-f8088ccf2598.png" width="300">
    </p>
 
 2. UI associated to (3.) resulting from user input from (Dynamo Script Layout 2.) and information from (Dynamo Script Layout 1.).
    <p align="center">
-    <img src="https://user-images.githubusercontent.com/44215479/81617573-8b53e800-939a-11ea-9cbd-500da098e4f4.png" width="200">
+    <img src="https://user-images.githubusercontent.com/44215479/81617573-8b53e800-939a-11ea-9cbd-500da098e4f4.png" width="300">
    </p>
 
 3. Resulting Output after applying Revit structural elments to column layer and brace layer associated to (Dynamo Script Layout 5.).
@@ -110,7 +110,7 @@ Overall graph view
 6. Follow next user prompt to auto model to 3D wireframe
    <p align="center">
     <img src="https://user-images.githubusercontent.com/44215479/81619185-d8858900-939d-11ea-8d82-66e4c6b33ee8.png" width="600">
-    <img src="https://user-images.githubusercontent.com/44215479/81619367-4631b500-939e-11ea-9639-4b78e9c18375.png" width="400">
+    <img src="https://user-images.githubusercontent.com/44215479/81619367-4631b500-939e-11ea-9639-4b78e9c18375.png" width="300">
    </p>
 7. The following is the result of the input in (6.).
    <p align="center">
