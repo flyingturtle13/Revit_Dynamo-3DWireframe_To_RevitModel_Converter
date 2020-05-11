@@ -1,9 +1,12 @@
 # Revit Dynamo - 3D Wireframe to Revit Model Conversion
 This script helps to enhance coordination between architects and structural eningeers during design development.  This script is especially useful for complicated structures and automates converting a 3D wireframe (DWG format) to structural members in Revit during the design coordination iterative process. This can then serve as a foundational model for the structural engineer to update member sizes or add structural members in Revit after structural analysis is performed.
 
-The script requires a DWG file format linked into the Revit model. Using Dynamo Player, user is prompted to selected which linked CAD element to process.  Based on layers in the CAD file, user can specify which model category to apply to a layer. It is important for the structural engineer to communicate to the architect what structural memer layer types and how to assign 3D wireframe elements to which layers in their authoring software (i.e. Rhino). This is especially important when differentiating between structural columns and structural framing elements. This script only applies to modeling structural elements to a 3D wireframe. User still needs to update element parameters such as Structural Usage or Start/End Connections.    
+The script requires a DWG file format linked into the Revit model. Using Dynamo Player, user is prompted to selected which linked CAD element to process.  Based on layers in the CAD file, user can specify which model category to apply to a layer. It is important for the structural engineer to communicate to the architect what structural member layer types and how to assign 3D wireframe elements to which layers in their authoring software (i.e. Rhino). This is especially important when differentiating between structural columns and structural framing elements. This script only applies to modeling structural elements to a 3D wireframe. 
 
-**NOTE:** The Model Examples Folder contains a sample 3D wireframe and output structural Revit model.
+**NOTE:** 
+  1. The Model Examples Folder contains a sample 3D wireframe and output structural Revit model.
+  2. User to load desired structural families prior to running script.
+  3. User still needs to update element parameters such as Structural Usage or Start/End Connections.
 
 ## Getting Started
 Environment setup regarding script development logistics.
@@ -30,6 +33,11 @@ Environment setup regarding script development logistics.
   - User executes Dynamo Player to initiate script
   -Data Shapes MultipleInputForm++ node used to obtain user input to perform structural modeling task
 
+* Setup Requirements and Capabilities
+  - Structural engineer to communicate/coordinate with architect what structural member Layer types needed and how to assign 3D wireframe elements to appropriate Layer
+  - User to load desired structural families prior to running script.
+  - User still needs to update element parameters such as Structural Usage or Start/End Connections.
+  
 #### Dynamo Script Layout
 Overall graph view
   <p align="center">
@@ -74,7 +82,7 @@ Overall graph view
 #### Mapping Script to UI
 1. UI associated to (Dynamo Script Layout 2.)
    <p align="center">
-    <img src="https://user-images.githubusercontent.com/44215479/81255262-1707f600-8fe2-11ea-847a-2806dda91c97.png" width="600">
+    <img src="ttps://user-images.githubusercontent.com/44215479/81617992-5300d980-939b-11ea-914e-6e3f328f234e.png" width="600">
    </p>
 
 2. UI associated to (3.) resulting from user input from (Dynamo Script Layout 2.) and information from (Dynamo Script Layout 1.).
@@ -89,26 +97,33 @@ Overall graph view
        
 ## Running Script & User Implementation Instructions
 1. Clone or download project. </br>
-2. In own Revit project or using example Revit model in Example Revit Model folder, load shared parameters from Revit_DynamicParameter_Export.txt
-<p align="center">
-  <img src="https://user-images.githubusercontent.com/44215479/81255753-5be05c80-8fe3-11ea-897c-1e05fd6803f1.png" width="400">
-</p>
-3. Select an model element (e.g. wall, floor, etc.), to confirm shared parameters are loaded.
-<p align="center">
-  <img src="https://user-images.githubusercontent.com/44215479/81255898-c1344d80-8fe3-11ea-8dfd-5aa9977640ee.png" width="600">
-</p>
-4. Open the Dynamo script (RevitMetaDataExporter.dyn) in Dynamo. </br>
-5. In the User Input section (Select Model Elements node), select and drag select all the desired elements to be processed in the Revit 3D view and select Run in Dynamo.
-   <p align = "center">
-      <img src="https://user-images.githubusercontent.com/44215479/81256281-db226000-8fe4-11ea-8c00-5fb1068cd275.png" width="600">
+2. In own Revit project Link CAD in example 3D wireframe model (3D_Wireframe-Example.dwg) in Model Examples folder or own wireframe model.
+3. User to load desired structural families prior to running script.
+4. Open Dynamo Player and select folder with 3DWireframe_To_RevitModel_Converter.dyn to display script (DYN).
+   <p align="center">
+    <img src="https://user-images.githubusercontent.com/44215479/81618624-99a30380-939c-11ea-9b06-330fc01e681b.png" width="600">
    </p>
-6. In a Revit 3D view, select an element and check that shared parameters have been updated
-   <p align = "center">
-      <img src="https://user-images.githubusercontent.com/44215479/81256570-c09cb680-8fe5-11ea-8a4d-5c5e7e185723.png" width="400">
+5. Follow user prompt and select linked CAD file to process
+   <p align="center">
+    <img src="https://user-images.githubusercontent.com/44215479/81618864-2483fe00-939d-11ea-86ac-0ced8ec76c46.png" width="600">
    </p>
-
-## References for Further Learning
-- [Using Datasmith with Revit - Epic Games Unreal Engine](https://docs.unrealengine.com/en-US/Engine/Content/Importing/Datasmith/SoftwareInteropGuides/Revit/index.html)
-- [Using Datasmith Metada - Epic Games Unreal Engine](https://docs.unrealengine.com/en-US/Engine/Content/Importing/Datasmith/Overview/UsingDatasmithMetadata/index.html)
+6. Follow next user prompt to auto model to 3D wireframe
+   <p align="center">
+    <img src="https://user-images.githubusercontent.com/44215479/81619185-d8858900-939d-11ea-8d82-66e4c6b33ee8.png" width="600">
+    <img src="https://user-images.githubusercontent.com/44215479/81619367-4631b500-939e-11ea-9639-4b78e9c18375.png" width="400">
+   </p>
+7. The following is the result of the input in (6.).
+   <p align="center">
+    <img src="https://user-images.githubusercontent.com/44215479/81619502-9ad53000-939e-11ea-99f6-36ce9b2f8cd1.png" width="600">
+   </p>
+8. Reapeat steps (4.) - (6.) until all desired elements are modeled.
+   <p align="center">
+    <img src="https://user-images.githubusercontent.com/44215479/81619897-6f9f1080-939f-11ea-9186-430a4e7f78ac.png" width="600">
+    <img src="https://user-images.githubusercontent.com/44215479/81619926-7f1e5980-939f-11ea-88c2-96035d71af86.png" width="600">
+   </p>
+9. Below is what the completed example should look like.  Strutural engineer or modeler can now clean-up and update model as needed in Revit.
+   <p align="center">
+    <img src="https://user-images.githubusercontent.com/44215479/81620165-14b9e900-93a0-11ea-9b99-7759930f09fc.png" width="600">
+   </p>
 
 
