@@ -32,25 +32,60 @@ Environment setup regarding script development logistics.
 
 #### Dynamo Script Layout
 Overall graph view
-<p align="center">
-  <img src="https://user-images.githubusercontent.com/44215479/81253410-5c75f480-8fdd-11ea-9512-8514686a6725.png" width="600">
-</p>
+  <p align="center">
+   <img src="https://user-images.githubusercontent.com/44215479/81614036-4cbb2f00-9394-11ea-9b2a-2e84bdc03692.png" width="1000">
+  </p>
 
 1. User Input
-<p align="center">
-  <img src="https://user-images.githubusercontent.com/44215479/81253905-85e35000-8fde-11ea-8d98-efc1499fd302.png" width="400">
-</p>
+   * Uses Data Shapes package to create input types and to be used in MultipleInputForm++ (obtain user input)
+   <p align="center">
+    <img src="https://user-images.githubusercontent.com/44215479/81614113-68bed080-9394-11ea-9d35-36fa42638d04.png" width="600">
+   </p>
 
-2. Example of Backend Process for a parameter
-    * **Note:** A warning may be indicated as an elements(s) may not have the parameter applicable to it.  See Output (Watch node) which element has a null value.  This can be ignored. 
-<p align="center">
-  <img src="https://user-images.githubusercontent.com/44215479/81253998-c93dbe80-8fde-11ea-99f7-df813fc4c3af.png" width="600">
-</p>
+2. Example of Backend Process Per User Input
+   * This process makes the selected linked CAD file easily accessed for processing by removing nested lists
+   <p align="center">
+    <img src="https://user-images.githubusercontent.com/44215479/81614285-ac193f00-9394-11ea-80ee-41c54d201a2e.png" width="600">
+   </p>
 
-3. Mapping Script to UI
-<p align="center">
-  <img src="https://user-images.githubusercontent.com/44215479/81255262-1707f600-8fe2-11ea-847a-2806dda91c97.png" width="600">
-</p>
+3. User Input
+   * Uses Data Shapes package to create input types and to be used in MultipleInputForm++ (obtain user input)
+   * Creates consolidated list taking user selection from (2.) and model family type information from (1.).
+   <p align="center">
+    <img src="https://user-images.githubusercontent.com/44215479/81615475-82f9ae00-9396-11ea-8b5c-f72cbfe847e6.png" width="600">
+   </p>
+
+4. Example of Backend Process Per User Input
+   * Each process accesses user input by associated list index
+     * The selected layer will be used to access 3D lines on that layer to be converted to curves (using BimmorphNodes - CAD.CurvesFromCADLayers node)
+     * The selected structural frame or structural column type is assigned to curve if user has checked the box for type to be modeled
+     * The selected level is assigned for element level association.
+   <p align="center">
+    <img src="https://user-images.githubusercontent.com/44215479/81615475-82f9ae00-9396-11ea-8b5c-f72cbfe847e6.png" width="600">
+   </p>
+
+5. Revit Model Element Created
+   * StructuralFraming.BeamByCurve or StructuralFraming.ColumnByCurve Node is used to take the user input from (4.) to generate a Revit model element.
+   * This is repeated for all curves filtered by user selected CAD Layer.
+   <p align="center">
+    <img src="https://user-images.githubusercontent.com/44215479/81616796-03b9a980-9399-11ea-9cee-2acacfb1cf87.png" width="600">
+   </p>
+   
+#### Mapping Script to UI
+1. UI associated to (Dynamo Script Layout 2.)
+   <p align="center">
+    <img src="https://user-images.githubusercontent.com/44215479/81255262-1707f600-8fe2-11ea-847a-2806dda91c97.png" width="600">
+   </p>
+
+2. UI associated to (3.) resulting from user input from (Dynamo Script Layout 2.) and information from (Dynamo Script Layout 1.).
+   <p align="center">
+    <img src="https://user-images.githubusercontent.com/44215479/81617573-8b53e800-939a-11ea-9cbd-500da098e4f4.png" width="200">
+   </p>
+
+3. Resulting Output after applying Revit structural elments to column layer and brace layer associated to (Dynamo Script Layout 5.).
+   <p align="center">
+    <img src="https://user-images.githubusercontent.com/44215479/81617857-0cab7a80-939b-11ea-8f89-c6af9464e659.png" width="600">
+   </p>
        
 ## Running Script & User Implementation Instructions
 1. Clone or download project. </br>
